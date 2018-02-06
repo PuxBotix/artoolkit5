@@ -10,7 +10,7 @@
     <FrameLayout
         android:id="@+id/mainLayout"
         android:layout_width="0dp"
-        android:layout_height="320dp"
+        android:layout_height="fill_parent"
         android:orientation="vertical"
         android:layout_weight="0.65"/>
 
