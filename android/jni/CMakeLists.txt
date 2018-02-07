@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.4.1)
 
-project(ARToolkit C)
+# project(ARToolkit C)
 
 set(ARTOOLKIT_ROOT ${CMAKE_CURRENT_LIST_DIR}/../../)
 set(ARTOOLKIT_INCLUDES
@@ -71,7 +71,7 @@ add_library(ar STATIC
     ${ARTOOLKIT_ROOT}/lib/SRC/AR/vHouse.c
     ${ARTOOLKIT_ROOT}/lib/SRC/AR/vInnerP.c
     ${ARTOOLKIT_ROOT}/lib/SRC/AR/vTridiag.c)
-set_target_properties(ar PROPERTIES LINKER_LANGUAGE C)
+set_target_properties(ar PROPERTIES LINKER_LANGUAGE CXX)
 target_link_libraries(ar aricp)
 
 add_library(aricp STATIC
@@ -84,7 +84,7 @@ add_library(aricp STATIC
     ${ARTOOLKIT_ROOT}/lib/SRC/ARICP/icpStereoPoint.c
     ${ARTOOLKIT_ROOT}/lib/SRC/ARICP/icpStereoPointRobust.c
     ${ARTOOLKIT_ROOT}/lib/SRC/ARICP/icpUtil.c)
-set_target_properties(aricp PROPERTIES LINKER_LANGUAGE C)
+set_target_properties(aricp PROPERTIES LINKER_LANGUAGE CXX)
 target_link_libraries(aricp ar)
 
 add_library(armulti STATIC
@@ -92,23 +92,23 @@ add_library(armulti STATIC
     ${ARTOOLKIT_ROOT}/lib/SRC/ARMulti/arMultiGetTransMat.c
     ${ARTOOLKIT_ROOT}/lib/SRC/ARMulti/arMultiGetTransMatStereo.c
     ${ARTOOLKIT_ROOT}/lib/SRC/ARMulti/arMultiReadConfigFile.c)
-set_target_properties(armulti PROPERTIES LINKER_LANGUAGE C)
+set_target_properties(armulti PROPERTIES LINKER_LANGUAGE CXX)
 
 add_library(argsub_es STATIC
     ${ARTOOLKIT_ROOT}/lib/SRC/Gl/gsub_es.c
     ${ARTOOLKIT_ROOT}/lib/SRC/Gl/glStateCache.c
     ${ARTOOLKIT_ROOT}/lib/SRC/Gl/gsub_mtx.c)
-set_target_properties(argsub_es PROPERTIES LINKER_LANGUAGE C)
+set_target_properties(argsub_es PROPERTIES LINKER_LANGUAGE CXX)
 
 add_library(argsub_es2 STATIC
     ${ARTOOLKIT_ROOT}/lib/SRC/Gl/gsub_es2.c
     ${ARTOOLKIT_ROOT}/lib/SRC/Gl/glStateCache2.c
     ${ARTOOLKIT_ROOT}/lib/SRC/Gl/gsub_mtx.c)
-set_target_properties(argsub_es2 PROPERTIES LINKER_LANGUAGE C)
+set_target_properties(argsub_es2 PROPERTIES LINKER_LANGUAGE CXX)
 
 add_library(arosg STATIC
     ${ARTOOLKIT_ROOT}/lib/SRC/ARosg/arosg.cpp)
-set_target_properties(arosg PROPERTIES LINKER_LANGUAGE C)
+set_target_properties(arosg PROPERTIES LINKER_LANGUAGE CXX)
 
 add_library(eden STATIC
     ${ARTOOLKIT_ROOT}/lib/SRC/Eden/EdenError.c
@@ -136,7 +136,7 @@ add_library(eden STATIC
     ${ARTOOLKIT_ROOT}/lib/SRC/Eden/gluttext/glut_swidth.c
     ${ARTOOLKIT_ROOT}/lib/SRC/Eden/gluttext/glut_tr10.c
     ${ARTOOLKIT_ROOT}/lib/SRC/Eden/gluttext/glut_tr24.c)
-set_target_properties(eden PROPERTIES LINKER_LANGUAGE C)
+set_target_properties(eden PROPERTIES LINKER_LANGUAGE CXX)
 
 add_library(kpm STATIC
     ${ARTOOLKIT_ROOT}/lib/SRC/KPM/FreakMatcher/detectors/DoG_scale_invariant_detector.cpp
@@ -176,7 +176,7 @@ add_library(ar2 STATIC
     ${ARTOOLKIT_ROOT}/lib/SRC/AR2/tracking.c
     ${ARTOOLKIT_ROOT}/lib/SRC/AR2/tracking2d.c
     ${ARTOOLKIT_ROOT}/lib/SRC/AR2/util.c)
-set_target_properties(ar2 PROPERTIES LINKER_LANGUAGE C)
+set_target_properties(ar2 PROPERTIES LINKER_LANGUAGE CXX)
 
 add_library(arutil STATIC
     ${ARTOOLKIT_ROOT}/lib/SRC/ARUtil/android_system_property_get.c
@@ -191,12 +191,12 @@ add_library(arutil STATIC
     ${ARTOOLKIT_ROOT}/lib/SRC/ARUtil/time.c
     ${ARTOOLKIT_ROOT}/lib/SRC/ARUtil/unzip.c
     ${ARTOOLKIT_ROOT}/lib/SRC/ARUtil/zip.c)
-set_target_properties(arutil PROPERTIES LINKER_LANGUAGE C)
+set_target_properties(arutil PROPERTIES LINKER_LANGUAGE CXX)
 
 add_library(arvideo STATIC
     # ${ARTOOLKIT_ROOT}/lib/SRC/Video/AVFoundation/cparams.c
-    # ${ARTOOLKIT_ROOT}/lib/SRC/Video/Android/sqlite3.c
-    # ${ARTOOLKIT_ROOT}/lib/SRC/Video/Android/videoAndroid.c
+    ${ARTOOLKIT_ROOT}/lib/SRC/Video/Android/sqlite3.c
+    ${ARTOOLKIT_ROOT}/lib/SRC/Video/Android/videoAndroid.c
     ${ARTOOLKIT_ROOT}/lib/SRC/Video/Dummy/videoDummy.c
     # ${ARTOOLKIT_ROOT}/lib/SRC/Video/GStreamer/videoGStreamer.c
     ${ARTOOLKIT_ROOT}/lib/SRC/Video/Image/videoImage.c
@@ -212,7 +212,7 @@ add_library(arvideo STATIC
     ${ARTOOLKIT_ROOT}/lib/SRC/Video/videoLuma.c
     ${ARTOOLKIT_ROOT}/lib/SRC/Video/videoRGBA.c
     ${ARTOOLKIT_ROOT}/lib/SRC/Video/videoSaveImage.c)
-set_target_properties(arvideo PROPERTIES LINKER_LANGUAGE C)
+set_target_properties(arvideo PROPERTIES LINKER_LANGUAGE CXX)
 
 set(CURL_ROOT ${ARTOOLKIT_ROOT}/android/jni/curl)
 add_library(curl STATIC IMPORTED)
@@ -226,7 +226,7 @@ find_library(curl-lib curl)
 
 include(AndroidNdkModules)
 android_ndk_import_module_cpufeatures()
-set_target_properties(cpufeatures PROPERTIES LINKER_LANGUAGE C)
+set_target_properties(cpufeatures PROPERTIES LINKER_LANGUAGE CXX)
 
 add_library(ARWrapper SHARED
     ${ARTOOLKIT_ROOT}/lib/SRC/ARWrapper/ARController.cpp
@@ -240,7 +240,7 @@ add_library(ARWrapper SHARED
     ${ARTOOLKIT_ROOT}/lib/SRC/ARWrapper/AndroidFeatures.cpp
     ${ARTOOLKIT_ROOT}/lib/SRC/ARWrapper/ColorConversion.cpp
     ${ARTOOLKIT_ROOT}/lib/SRC/ARWrapper/trackingSub.c)
-set_target_properties(ARWrapper PROPERTIES LINKER_LANGUAGE C)
+set_target_properties(ARWrapper PROPERTIES LINKER_LANGUAGE CXX)
 target_link_libraries(ARWrapper
     ${log-lib}
     ${gl-lib}

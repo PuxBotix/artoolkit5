@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId = "org.artoolkit.ar.samples.ARSimple"
-        minSdkVersion 15
+        minSdkVersion 21
         // Signals the Google Play Store as to what device, running this minimum indicated or greater version, an app can be installed on
         targetSdkVersion 27
         // Indicates the version that you have tested your app on (presumably up to and including)
@@ -24,7 +24,7 @@ android {
 
         externalNativeBuild {
             cmake {
-                arguments "-DANDROID_STL=c++_shared", "-DANDROID_ARM_NEON=TRUE", "-DTARGET_PLATFORM_ANDROID=1"
+                arguments "-DANDROID_STL=c++_shared", "-DANDROID_ARM_NEON=TRUE", "-DTARGET_PLATFORM_ANDROID=1", "-DANDROID_CPP_FEATURES=exceptions"
             }
         }
     }

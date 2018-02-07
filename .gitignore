@@ -200,3 +200,4 @@ lib/win64-x64/ARosgd.exp
 *.ipdb
 .history/
 *.iobj
+/AndroidStudioProjects/ARSimpleProj/aRSimple/.externalNativeBuild
